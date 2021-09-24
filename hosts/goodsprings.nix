@@ -4,12 +4,12 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./modules/nix-configuration.nix
-      ./modules/fail2ban.nix
-      ./modules/laplace.nix
-      ./modules/timew-sync-server.nix
-      ./modules/mailserver.nix
-      ./modules/hydra.nix
+      ../modules/nix-configuration.nix
+      ../modules/fail2ban.nix
+      ../modules/laplace.nix
+      ../modules/timew-sync-server.nix
+      ../modules/mailserver.nix
+      ../modules/hydra.nix
     ];
 
   boot.loader.grub.enable = true;
@@ -17,6 +17,7 @@
   boot.loader.grub.device = "/dev/sda";
 
   networking.hostName = "goodsprings";
+  networking.nameservers = [ "1.1.1.1" ];
 
   time.timeZone = "Europe/Berlin";
 
