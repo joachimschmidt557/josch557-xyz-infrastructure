@@ -10,6 +10,7 @@
       ../modules/timew-sync-server.nix
       ../modules/mailserver.nix
       ../modules/hydra.nix
+      ../modules/cachix.nix
     ];
 
   boot.loader.grub.enable = true;
