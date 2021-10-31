@@ -11,6 +11,7 @@
       ../modules/mailserver.nix
       ../modules/hydra.nix
       ../modules/cachix.nix
+      ../modules/video.nix
     ];
 
   boot.loader.grub.enable = true;
