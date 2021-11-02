@@ -9,8 +9,6 @@
       ../modules/laplace.nix
       ../modules/timew-sync-server.nix
       ../modules/mailserver.nix
-      ../modules/hydra.nix
-      ../modules/cachix.nix
       ../modules/video.nix
     ];
 
