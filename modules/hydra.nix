@@ -5,16 +5,16 @@ let
 in {
   services.hydra = {
     enable = true;
-    hydraURL = "https://hydra.josch557.xyz";
+    hydraURL = "https://hydra.josch557.de";
     useSubstitutes = true;
     port = port;
     buildMachinesFiles = [];
-    notificationSender = "hydra@josch557.xyz";
+    notificationSender = "hydra@josch557.de";
     minimumDiskFree = 5;
   };
 
   services.nginx.virtualHosts = {
-    "hydra.josch557.xyz" = {
+    "hydra.josch557.de" = {
       forceSSL = true;
       enableACME = true;
       locations."/" = {

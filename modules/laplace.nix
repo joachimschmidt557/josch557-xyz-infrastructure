@@ -72,7 +72,7 @@ in {
   };
 
   services.nginx.virtualHosts = {
-    "laplace.josch557.xyz" = {
+    "laplace.josch557.de" = {
       forceSSL = true;
       enableACME = true;
       locations."/" = {

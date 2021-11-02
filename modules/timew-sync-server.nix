@@ -53,7 +53,7 @@ in {
   };
 
   services.nginx.virtualHosts = {
-    "timewsync.josch557.xyz" = {
+    "timewsync.josch557.de" = {
       forceSSL = true;
       enableACME = true;
       locations."/" = {

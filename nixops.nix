@@ -8,7 +8,7 @@
   goodsprings =
     { config, pkgs, ... }:
     {
-      deployment.targetHost = "goodsprings.josch557.xyz";
+      deployment.targetHost = "goodsprings.josch557.de";
       imports = [ ./hosts/goodsprings.nix ];
     };
 }

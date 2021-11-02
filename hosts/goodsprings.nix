@@ -52,7 +52,7 @@
     recommendedGzipSettings = true;
     recommendedProxySettings = true;
 
-    virtualHosts."goodsprings.josch557.xyz" = {
+    virtualHosts."goodsprings.josch557.de" = {
       locations."/" = {
         return = "404";
       };
