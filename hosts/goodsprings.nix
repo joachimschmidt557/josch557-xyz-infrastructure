@@ -61,5 +61,11 @@
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
+  services.restic.backups.backblaze = {
+    repository = "b2:goodsprings-01";
+    s3CredentialsFile = "/var/secrets/restic_env";
+    passwordFile = "/var/secrets/restic_password";
+  };
+
   system.stateVersion = "21.05";
 }

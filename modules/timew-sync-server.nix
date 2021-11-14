@@ -62,7 +62,7 @@ in {
     };
   };
 
-  services.duplicity.include = [
+  services.restic.backups.backblaze.paths = [
     "/var/lib/timew-sync-server"
   ];
 }
