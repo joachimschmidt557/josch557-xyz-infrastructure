@@ -24,4 +24,8 @@
     # TODO I had some issues with knot
     localDnsResolver = false;
   };
+
+  services.restic.backups.backblaze.paths = [
+    "/var/vmail"
+  ];
 }
