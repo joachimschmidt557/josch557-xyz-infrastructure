@@ -2,13 +2,14 @@
 
 let
   port = 8800;
-in {
+in
+{
   services.hydra = {
     enable = true;
     hydraURL = "https://hydra.josch557.de";
     useSubstitutes = true;
     port = port;
-    buildMachinesFiles = [];
+    buildMachinesFiles = [ ];
     notificationSender = "hydra@josch557.de";
     minimumDiskFree = 5;
   };

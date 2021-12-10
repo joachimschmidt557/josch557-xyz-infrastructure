@@ -3,18 +3,19 @@
 let
   port = 8710;
   package = pkgs.timew-sync-server;
-in {
+in
+{
   users.users.timew-sync-server = {
     description = "timewarrior synchronization server";
     group = "timew-sync-server";
     isSystemUser = true;
   };
 
-  users.groups.timew-sync-server = {};
+  users.groups.timew-sync-server = { };
 
   systemd.services.timew-sync-server = {
     description = "timewarrior synchronization server";
-    after = [ "network.target "];
+    after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {

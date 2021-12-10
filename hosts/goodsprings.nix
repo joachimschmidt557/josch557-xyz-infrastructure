@@ -9,6 +9,7 @@
       ../modules/laplace.nix
       ../modules/timew-sync-server.nix
       ../modules/mailserver.nix
+      ../modules/radicale.nix
       ../modules/video.nix
     ];
 
