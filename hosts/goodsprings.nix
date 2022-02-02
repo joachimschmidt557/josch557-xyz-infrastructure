@@ -64,7 +64,7 @@
 
   services.restic.backups.backblaze = {
     repository = "b2:goodsprings-01";
-    s3CredentialsFile = "/var/secrets/restic_env";
+    environmentFile = "/var/secrets/restic_env";
     passwordFile = "/var/secrets/restic_password";
   };
 
