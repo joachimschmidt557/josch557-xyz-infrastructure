@@ -38,7 +38,7 @@ in
 
   systemd.services.laplace = {
     description = "laplace";
-    after = [ "network.target " ];
+    after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {
