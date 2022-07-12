@@ -35,4 +35,8 @@ in
       };
     };
   };
+
+  services.restic.backups.backblaze.paths = [
+    "/var/lib/radicale/collections"
+  ];
 }

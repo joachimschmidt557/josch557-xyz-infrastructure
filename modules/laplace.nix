@@ -59,13 +59,14 @@ in
       ProtectHome = true;
       PrivateTmp = true;
       PrivateDevices = true;
+      PrivateUsers = true;
       ProtectHostname = true;
       ProtectClock = true;
       ProtectKernelTunables = true;
       ProtectKernelModules = true;
       ProtectKernelLogs = true;
       ProtectControlGroups = true;
-      RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
+      RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
       LockPersonality = true;
       MemoryDenyWriteExecute = true;
       RestrictRealtime = true;
@@ -82,6 +83,13 @@ in
         proxyPass = "http://${listenAddress}:${toString port}";
         proxyWebsockets = true;
       };
+      extraConfig = ''
+        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+        add_header X-Frame-Options "DENY" always;
+        add_header Content-Security-Policy "frame-ancestors 'none'" always;
+        add_header X-XSS-Protection "1; mode=block" always;
+        add_header X-Content-Type-Options "nosniff" always;
+      '';
     };
   };
 }
