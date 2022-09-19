@@ -3,7 +3,7 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
+      ./goodsprings/hardware-configuration.nix
       ../modules/nix-configuration.nix
       ../modules/fail2ban.nix
       ../modules/laplace.nix
