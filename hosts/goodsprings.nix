@@ -11,6 +11,7 @@
       ../modules/mailserver.nix
       ../modules/radicale.nix
       ../modules/video.nix
+      ../modules/gotify.nix
     ];
 
   boot.loader.grub.enable = true;
@@ -39,7 +40,9 @@
 
   security.acme = {
     acceptTerms = true;
-    email = "joachim.schmidt557@outlook.com";
+    defaults = {
+      email = "joachim.schmidt557@outlook.com";
+    };
   };
 
   services.openssh.enable = true;
