@@ -1,8 +1,9 @@
 {
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+  inputs.simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-22.11";
 
-  outputs = { self, nixpkgs }: {
+  outputs = { self, nixpkgs, simple-nixos-mailserver }: {
 
     nixopsConfigurations.default = {
 
@@ -18,7 +19,10 @@
         { config, pkgs, ... }:
         {
           deployment.targetHost = "goodsprings.josch557.de";
-          imports = [ ./hosts/goodsprings.nix ];
+          imports = [
+            ./hosts/goodsprings.nix
+            simple-nixos-mailserver.nixosModule
+          ];
         };
 
     };
