@@ -11,7 +11,6 @@
       ../modules/mailserver.nix
       ../modules/radicale.nix
       ../modules/video.nix
-      ../modules/gotify.nix
       ../modules/ntfy.nix
     ];
 
