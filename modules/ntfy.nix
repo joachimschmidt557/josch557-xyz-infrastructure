@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 let
   port = 8730;
@@ -28,7 +28,7 @@ in
   };
 
   # /var/lib/ntfy
-  systemd.services.ntfy-sh.serviceConfig.StateDirectory = "ntfy";
+  systemd.services.ntfy-sh.serviceConfig.StateDirectory = lib.mkForce "ntfy";
 
   # /var/cache/ntfy
   systemd.services.ntfy-sh.serviceConfig.CacheDirectory = "ntfy";
