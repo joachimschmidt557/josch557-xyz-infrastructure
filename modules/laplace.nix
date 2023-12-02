@@ -16,7 +16,7 @@ let
           sha256 = "0l7w7my64yi2pig8sdxgk8049ah3n1mb2wfw858ys3gk42xqa5xh";
         };
 
-        vendorSha256 = "022bil46fyjsd18diw0rnab987sp1ialb48rj18ksj75ghjqkr62";
+        vendorHash = "sha256-wuSJJXzlSD1RkBmRRVUMVx+UlrIZ8NhQaFp6ZwiNSwg=";
 
         postInstall = ''
           rm files/server.crt files/server.key
