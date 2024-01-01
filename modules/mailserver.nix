@@ -21,4 +21,10 @@
   services.restic.backups.backblaze.paths = [
     "/var/vmail"
   ];
+
+  services.fail2ban.jails.dovecot = {
+    settings = {
+      filter = "dovecot";
+    };
+  };
 }
