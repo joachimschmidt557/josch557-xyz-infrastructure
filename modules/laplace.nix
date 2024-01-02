@@ -89,6 +89,8 @@ in
         add_header Content-Security-Policy "frame-ancestors 'none'" always;
         add_header X-XSS-Protection "1; mode=block" always;
         add_header X-Content-Type-Options "nosniff" always;
+
+        add_header X-Robots-Tag "noindex, nofollow" always;
       '';
     };
   };
