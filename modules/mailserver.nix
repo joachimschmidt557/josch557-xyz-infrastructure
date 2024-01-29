@@ -27,4 +27,10 @@
       filter = "dovecot";
     };
   };
+
+  services.fail2ban.jails.postfix = {
+    settings = {
+      filter = "postfix[mode=aggressive]";
+    };
+  };
 }
