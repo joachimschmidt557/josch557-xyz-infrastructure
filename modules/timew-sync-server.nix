@@ -53,6 +53,10 @@ in
     };
   };
 
+  environment.systemPackages = [
+    package
+  ];
+
   services.nginx.virtualHosts = {
     "timewsync.josch557.de" = {
       forceSSL = true;
