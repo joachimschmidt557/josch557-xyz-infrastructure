@@ -12,6 +12,7 @@
       ../modules/radicale.nix
       ../modules/video.nix
       ../modules/ntfy.nix
+      ../modules/website.nix
     ];
 
   boot.loader.grub.enable = true;
@@ -56,6 +57,8 @@
     recommendedProxySettings = true;
 
     virtualHosts."goodsprings.josch557.de" = {
+      forceSSL = true;
+      enableACME = true;
       locations."/" = {
         return = "404";
       };
