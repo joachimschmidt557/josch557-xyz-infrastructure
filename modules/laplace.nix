@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, options, ... }:
 
 let
   listenAddress = "127.0.0.1";
-  port = 8700;
+  port = config.ports.laplace;
   laplace = pkgs.callPackage
     ({ buildGoModule, fetchFromGitHub }:
       buildGoModule rec {
@@ -26,64 +26,74 @@ let
       }
     )
     { };
+
+  inherit (lib) mkOption types;
 in
 {
-  users.users.laplace = {
-    description = "laplace";
-    group = "laplace";
-    isSystemUser = true;
-  };
-
-  users.groups.laplace = { };
-
-  systemd.services.laplace = {
-    description = "laplace";
-    after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
-
-    serviceConfig = {
-      User = "laplace";
-      Group = "laplace";
-      WorkingDirectory = "${laplace}/share/laplace";
-      ExecStart = "${laplace}/bin/laplace -addr ${listenAddress}:${toString port} -tls=false";
-      Restart = "always";
-
-      # Capabilities
-      CapabilityBoundingSet = "";
-
-      # Security
-      NoNewPrivileges = true;
-
-      # Sandboxing
-      ProtectSystem = "strict";
-      ProtectHome = true;
-      PrivateTmp = true;
-      PrivateDevices = true;
-      PrivateUsers = true;
-      ProtectHostname = true;
-      ProtectClock = true;
-      ProtectKernelTunables = true;
-      ProtectKernelModules = true;
-      ProtectKernelLogs = true;
-      ProtectControlGroups = true;
-      RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
-      LockPersonality = true;
-      MemoryDenyWriteExecute = true;
-      RestrictRealtime = true;
-      RestrictSUIDSGID = true;
-      PrivateMounts = true;
+  options = {
+    ports.laplace = mkOption {
+      type = types.port;
+      description = "Port laplace will be listening on.";
     };
   };
 
-  services.nginx.virtualHosts = {
-    "laplace.josch557.de" = {
-      forceSSL = true;
-      enableACME = true;
-      locations."/" = {
-        proxyPass = "http://${listenAddress}:${toString port}";
-        proxyWebsockets = true;
+  config = {
+    users.users.laplace = {
+      description = "laplace";
+      group = "laplace";
+      isSystemUser = true;
+    };
+
+    users.groups.laplace = { };
+
+    systemd.services.laplace = {
+      description = "laplace";
+      after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
+
+      serviceConfig = {
+        User = "laplace";
+        Group = "laplace";
+        WorkingDirectory = "${laplace}/share/laplace";
+        ExecStart = "${laplace}/bin/laplace -addr ${listenAddress}:${toString port} -tls=false";
+        Restart = "always";
+
+        # Capabilities
+        CapabilityBoundingSet = "";
+
+        # Security
+        NoNewPrivileges = true;
+
+        # Sandboxing
+        ProtectSystem = "strict";
+        ProtectHome = true;
+        PrivateTmp = true;
+        PrivateDevices = true;
+        PrivateUsers = true;
+        ProtectHostname = true;
+        ProtectClock = true;
+        ProtectKernelTunables = true;
+        ProtectKernelModules = true;
+        ProtectKernelLogs = true;
+        ProtectControlGroups = true;
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
+        LockPersonality = true;
+        MemoryDenyWriteExecute = true;
+        RestrictRealtime = true;
+        RestrictSUIDSGID = true;
+        PrivateMounts = true;
       };
-      extraConfig = ''
+    };
+
+    services.nginx.virtualHosts = {
+      "laplace.josch557.de" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://${listenAddress}:${toString port}";
+          proxyWebsockets = true;
+        };
+        extraConfig = ''
         add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
         add_header X-Frame-Options "DENY" always;
         add_header Content-Security-Policy "frame-ancestors 'none'" always;
@@ -92,6 +102,8 @@ in
 
         add_header X-Robots-Tag "noindex, nofollow" always;
       '';
+      };
     };
+
   };
 }

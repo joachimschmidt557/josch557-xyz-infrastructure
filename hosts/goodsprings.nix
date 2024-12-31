@@ -6,6 +6,7 @@
       ./goodsprings/hardware-configuration.nix
       ../modules/nix-configuration.nix
       ../modules/fail2ban.nix
+
       ../modules/laplace.nix
       ../modules/timew-sync-server.nix
       ../modules/mailserver.nix
@@ -70,6 +71,13 @@
   };
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
+
+  ports = {
+    laplace = 8700;
+    ntfy = 8730;
+    radicale = 5232;
+    timew-sync-server = 8710;
+  };
 
   services.restic.backups.backblaze = {
     repository = "b2:goodsprings-01";
