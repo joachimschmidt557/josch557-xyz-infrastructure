@@ -18,7 +18,11 @@
       goodsprings =
         { config, pkgs, ... }:
         {
-          deployment.targetHost = "goodsprings.josch557.de";
+          deployment = {
+            targetHost = "goodsprings.josch557.de";
+            targetPort = 22;
+          };
+
           imports = [
             ./hosts/goodsprings.nix
             simple-nixos-mailserver.nixosModule
