@@ -14,6 +14,7 @@
       ../modules/video.nix
       ../modules/ntfy.nix
       ../modules/website.nix
+      ../modules/forgejo.nix
     ];
 
   boot.loader.grub.enable = true;
@@ -48,9 +49,9 @@
 
   services.openssh = {
     enable = true;
-    ports = [ 8051 ];
+    ports = [ 22 ];
   };
-  deployment.targetPort = 8051;
+  deployment.targetPort = 22;
 
   services.nginx = {
     enable = true;
@@ -78,6 +79,7 @@
     ntfy = 8730;
     radicale = 5232;
     timew-sync-server = 8710;
+    forgejo = 8750;
   };
 
   services.restic.backups.backblaze = {
