@@ -18,10 +18,7 @@
       goodsprings =
         { config, pkgs, ... }:
         {
-          deployment = {
-            targetHost = "goodsprings.josch557.de";
-            targetPort = 22;
-          };
+          deployment.targetHost = "goodsprings.josch557.de";
 
           imports = [
             ./hosts/goodsprings.nix

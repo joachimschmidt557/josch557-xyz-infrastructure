@@ -48,8 +48,9 @@
 
   services.openssh = {
     enable = true;
-    ports = [ 22 ];
+    ports = [ 8051 ];
   };
+  deployment.targetPort = 8051;
 
   services.nginx = {
     enable = true;
