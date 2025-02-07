@@ -15,6 +15,7 @@
       ../modules/ntfy.nix
       ../modules/website.nix
       ../modules/forgejo.nix
+      ../modules/playlist-thing.nix
     ];
 
   boot.loader.grub.enable = true;
@@ -80,6 +81,7 @@
     radicale = 5232;
     timew-sync-server = 8710;
     forgejo = 8750;
+    playlist-thing = 8760;
   };
 
   services.restic.backups.backblaze = {
