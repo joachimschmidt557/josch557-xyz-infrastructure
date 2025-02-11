@@ -17,11 +17,9 @@ in
     virtualisation.oci-containers.containers.playlist-thing = {
       image = "ghcr.io/playlist-thing/playlist-thing:main";
       ports = [ "127.0.0.1:${toString port}:3000" ];
-      environment = {
-        ADDRESS_HEADER = "X-Forwarded-For";
-        PROTOCOL_HEADER = "X-Forwarded-Proto";
-        HOST_HEADER = "X-Forwarded-Host";
-      };
+      environmentFiles = [
+        "/var/secrets/playlist-thing_env"
+      ];
     };
 
     services.nginx.virtualHosts = {
@@ -30,11 +28,6 @@ in
         enableACME = true;
         locations."/" = {
           proxyPass = "http://127.0.0.1:${toString port}";
-          extraConfig = ''
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-            proxy_set_header X-Forwarded-Host $host;
-          '';
         };
         extraConfig = ''
           add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
