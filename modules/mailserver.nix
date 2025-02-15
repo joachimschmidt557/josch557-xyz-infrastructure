@@ -8,7 +8,8 @@
 
     # A list of all login accounts. To create the password hashes, use
     # nix run nixpkgs.apacheHttpd -c htpasswd -nbB "" "super secret password" | cut -d: -f2
-    loginAccounts = builtins.fromJSON (builtins.readFile ../secrets/mailserver-accounts.json);
+    # FIXME find a way to include repo-external secrets that can't be included as a file
+    loginAccounts = builtins.fromJSON (builtins.readFile "/home/joachim/secrets/josch557-de-infrastructure/mailserver-accounts.json");
 
     # Use Let's Encrypt certificates. Note that this needs to set up a stripped
     # down nginx and opens port 80.

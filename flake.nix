@@ -5,14 +5,13 @@
 
   outputs = { self, nixpkgs, simple-nixos-mailserver }: {
 
-    nixopsConfigurations.default = {
+    colmena = {
 
-      inherit nixpkgs;
-
-      network = {
-        description = "production environment";
-        enableRollback = true;
-        storage.legacy.databasefile = "~/.nixops/deployments.nixops";
+      meta = {
+        nixpkgs = import nixpkgs {
+          system = "x86_64-linux";
+          overlays = [];
+        };
       };
 
       goodsprings =
