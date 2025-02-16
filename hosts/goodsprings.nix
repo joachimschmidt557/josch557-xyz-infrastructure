@@ -17,6 +17,7 @@
       ../modules/website.nix
       ../modules/forgejo.nix
       ../modules/playlist-thing.nix
+      ../modules/playlist-thing-api.nix
     ];
 
   boot.loader.grub.enable = true;
