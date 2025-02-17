@@ -25,6 +25,16 @@
           ];
         };
 
+      novac =
+        { config, pkgs, ... }:
+        {
+          deployment.targetHost = "novac.josch557.de";
+
+          imports = [
+            ./hosts/novac.nix
+          ];
+        };
+
     };
 
   };
