@@ -4,9 +4,11 @@
   imports =
     [
       ./novac/hardware-configuration.nix
-      ../modules/fail2ban.nix
       ../modules/nix-configuration.nix
+      ../modules/fail2ban.nix
       ../modules/ssh.nix
+
+      ../modules/playlist-thing-keycloak.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -34,11 +36,35 @@
     htop
   ];
 
+  security.acme = {
+    acceptTerms = true;
+    defaults = {
+      email = "joachim.schmidt557@outlook.com";
+    };
+  };
+
   services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  services.nginx = {
+    enable = true;
+    appendHttpConfig = ''
+      server_names_hash_bucket_size 64;
+    '';
+    recommendedTlsSettings = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+    recommendedProxySettings = true;
+
+    virtualHosts."novac.josch557.de" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/" = {
+        return = "404";
+      };
+    };
+  };
+
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   system.stateVersion = "24.11";
 

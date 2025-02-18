@@ -6,8 +6,8 @@
       ./goodsprings/hardware-configuration.nix
       ../modules/nix-configuration.nix
       ../modules/fail2ban.nix
-
       ../modules/ssh.nix
+
       ../modules/laplace.nix
       ../modules/timew-sync-server.nix
       ../modules/mailserver.nix
