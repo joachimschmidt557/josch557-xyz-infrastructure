@@ -2,8 +2,9 @@
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
   inputs.simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-24.11";
+  inputs.arion.url = "github:hercules-ci/arion/main";
 
-  outputs = { self, nixpkgs, simple-nixos-mailserver }: {
+  outputs = { self, nixpkgs, simple-nixos-mailserver, arion }: {
 
     colmena = {
 
