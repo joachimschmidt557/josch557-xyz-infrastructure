@@ -8,16 +8,8 @@
       ../modules/fail2ban.nix
       ../modules/ssh.nix
 
-      ../modules/laplace.nix
-      ../modules/timew-sync-server.nix
       ../modules/mailserver.nix
       ../modules/radicale.nix
-      ../modules/video.nix
-      ../modules/ntfy.nix
-      ../modules/website.nix
-      ../modules/forgejo.nix
-      ../modules/playlist-thing.nix
-      ../modules/playlist-thing-api.nix
     ];
 
   boot.loader.grub.enable = true;
@@ -78,12 +70,7 @@
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   ports = {
-    laplace = 8700;
-    ntfy = 8730;
     radicale = 5232;
-    timew-sync-server = 8710;
-    forgejo = 8750;
-    playlist-thing = 8760;
   };
 
   services.restic.backups.backblaze = {

@@ -7,6 +7,15 @@
       ../modules/nix-configuration.nix
       ../modules/fail2ban.nix
       ../modules/ssh.nix
+
+      ../modules/laplace.nix
+      ../modules/video.nix
+      ../modules/website.nix
+      ../modules/timew-sync-server.nix
+      ../modules/ntfy.nix
+      ../modules/forgejo.nix
+      ../modules/playlist-thing.nix
+      ../modules/playlist-thing-api.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -63,6 +72,21 @@
   };
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
+
+  ports = {
+    laplace = 8700;
+    ntfy = 8730;
+    timew-sync-server = 8710;
+    forgejo = 8750;
+    playlist-thing = 8760;
+  };
+
+  services.restic.backups.backblaze = {
+    repository = "b2:searchlight-01";
+    environmentFile = "/var/secrets/restic_env";
+    passwordFile = "/var/secrets/restic_password";
+    initialize = true;
+  };
 
   system.stateVersion = "24.11";
 
