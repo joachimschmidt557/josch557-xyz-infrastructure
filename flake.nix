@@ -26,6 +26,16 @@
           ];
         };
 
+      searchlight =
+        { config, pkgs, ... }:
+        {
+          deployment.targetHost = "searchlight.josch557.de";
+
+          imports = [
+            ./hosts/searchlight.nix
+          ];
+        };
+
       novac =
         { config, pkgs, ... }:
         {
