@@ -14,6 +14,8 @@
       ../modules/timew-sync-server.nix
       ../modules/ntfy.nix
       ../modules/forgejo.nix
+      ../modules/mailserver.nix
+      ../modules/radicale.nix
       ../modules/playlist-thing.nix
       ../modules/playlist-thing-api.nix
     ];
@@ -78,6 +80,7 @@
     ntfy = 8730;
     timew-sync-server = 8710;
     forgejo = 8750;
+    radicale = 5232;
     playlist-thing = 8760;
   };
 

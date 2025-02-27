@@ -7,9 +7,6 @@
       ../modules/nix-configuration.nix
       ../modules/fail2ban.nix
       ../modules/ssh.nix
-
-      ../modules/mailserver.nix
-      ../modules/radicale.nix
     ];
 
   boot.loader.grub.enable = true;
@@ -68,10 +65,6 @@
   };
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
-
-  ports = {
-    radicale = 5232;
-  };
 
   services.restic.backups.backblaze = {
     repository = "b2:goodsprings-01";

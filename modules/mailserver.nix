@@ -3,7 +3,7 @@
 {
   mailserver = {
     enable = true;
-    fqdn = "goodsprings.josch557.de";
+    fqdn = "searchlight.josch557.de";
     domains = [ "josch557.de" ];
 
     # A list of all login accounts. To create the password hashes, use

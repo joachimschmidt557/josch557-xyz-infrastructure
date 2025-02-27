@@ -33,6 +33,7 @@
 
           imports = [
             ./hosts/searchlight.nix
+            simple-nixos-mailserver.nixosModule
           ];
         };
 
