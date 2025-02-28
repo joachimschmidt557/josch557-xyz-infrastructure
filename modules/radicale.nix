@@ -2,7 +2,8 @@
 
 let
   port = config.ports.radicale;
-  mailAccounts = config.mailserver.loginAccounts;
+  validAccount = name: account: !account.sendOnly;
+  mailAccounts = lib.filterAttrs validAccount config.mailserver.loginAccounts;
   htpasswd = pkgs.writeText "radicale.users" (lib.concatStrings
     (lib.flip lib.mapAttrsToList mailAccounts (mail: user:
       mail + ":" + user.hashedPassword + "\n"
