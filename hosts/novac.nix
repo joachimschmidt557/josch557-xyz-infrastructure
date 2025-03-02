@@ -7,6 +7,7 @@
       ../modules/nix-configuration.nix
       ../modules/fail2ban.nix
       ../modules/ssh.nix
+      ../modules/secrets.nix
 
       ../modules/playlist-thing-keycloak.nix
     ];
