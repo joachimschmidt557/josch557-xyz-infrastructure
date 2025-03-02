@@ -15,17 +15,6 @@
         };
       };
 
-      goodsprings =
-        { config, pkgs, ... }:
-        {
-          deployment.targetHost = "goodsprings.josch557.de";
-
-          imports = [
-            ./hosts/goodsprings.nix
-            simple-nixos-mailserver.nixosModule
-          ];
-        };
-
       searchlight =
         { config, pkgs, ... }:
         {
