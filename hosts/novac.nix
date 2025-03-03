@@ -67,6 +67,17 @@
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
+  ports = {
+    keycloak = 8080;
+  };
+
+  services.restic.backups.backblaze = {
+    repository = "b2:novac-01";
+    environmentFile = "/var/secrets/restic_env";
+    passwordFile = "/var/secrets/restic_password";
+    initialize = true;
+  };
+
   system.stateVersion = "24.11";
 
 }
